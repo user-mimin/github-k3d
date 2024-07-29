@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Create Variable Name Image
+        run: export IMAGE_NAMES=$(echo IMAGE_NAME)
       - name: Create deployment
         run: kubectl apply -f webserver.yaml
       - name: View deployment

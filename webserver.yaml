@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx-k3d
-        image: $IMAGE_NAME
+        image: $IMAGE_NAMES
         ports:
         - containerPort: 80
