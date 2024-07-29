@@ -25,10 +25,6 @@ jobs:
     needs: build-push-image
     runs-on: self-hosted
     steps:
-      - name: Create variable
-        run: export DOCKER_USER=${{ secrets.DOCKER_USER }}
-      - name: Verify variable
-        run: echo $DOCKER_USER
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Create deployment
