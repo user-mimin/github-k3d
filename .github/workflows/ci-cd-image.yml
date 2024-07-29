@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Replace variables in the template and output to deployment.yaml
+        run: envsubst < webserver.yaml.template > webserver.yaml
       - name: Create deployment
         run: kubectl apply -f webserver.yaml
       - name: View deployment
