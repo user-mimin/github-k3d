@@ -29,8 +29,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Create Variable Name Image
         run: export IMAGE_NAMES=$(echo IMAGE_NAME)
+      - name: Verication Variable Name Image
+        run: echo $IMAGE_NAMEs
       - name: Replace variables in the template and output to deployment.yaml
         run: envsubst < webserver.yaml.template > webserver.yaml
+      - name: verification deployment.yaml
+        run: cat webserver.yaml | grep image
       - name: check file
         run: ls -l
       - name: Create deployment
