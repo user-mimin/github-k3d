@@ -31,6 +31,8 @@ jobs:
         run: export IMAGE_NAMES=$(echo IMAGE_NAME)
       - name: Replace variables in the template and output to deployment.yaml
         run: envsubst < webserver.yaml.template > webserver.yaml
+      - name: check file
+        run: ls -l
       - name: Create deployment
         run: kubectl apply -f webserver.yaml
       - name: View deployment
