@@ -26,7 +26,9 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Create variable
-        run: echo ${{ secrets.DOCKER_USER }} > .env && IMAGE_NAME=$(cat .env)
+        run: export DOCKER_USER=${{ secrets.DOCKER_USER }}
+      - name: Verify variable
+        run: echo $DOCKER_USER
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Create deployment
