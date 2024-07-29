@@ -29,6 +29,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Create Variable Name Image
         run: export IMAGE_NAMES=$(echo IMAGE_NAME)
+      - name: Replace variables in the template and output to deployment.yaml
+        run: envsubst < webserver.yaml.template > webserver.yaml
       - name: Create deployment
         run: kubectl apply -f webserver.yaml
       - name: View deployment
