@@ -25,6 +25,8 @@ jobs:
     needs: build-push-image
     runs-on: self-hosted
     steps:
+      - name: Create variable
+        run: echo ${{ secrets.DOCKER_USER }} > .env && IMAGE_NAME=$(cat .env)
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Create deployment
